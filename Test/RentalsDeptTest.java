@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class RentalsDeptTest {
@@ -156,5 +158,24 @@ public class RentalsDeptTest {
 
         //we added slips with the hours 20,30 and 40, so the average has to be 30
         assert(30 ==  rentalsDept.GetAverageHours());
+    }
+
+    @Test
+    public void GetCarsWithTwoAs(){
+        Sedan sedan = new Sedan("blue", "kr234fep9", "Subaru BRZ", 2020, 20);
+        Sedan sedan2 = new Sedan("blue", "kr2suhius", "Nissan Navara", 2020, 30);
+        Bakkie bakkie = new Bakkie("silver", "oijoi2676", "Toyota Corolla", 2020, 400);
+        Bakkie bakkie2 = new Bakkie("silver", "oijoiu76", "VW Amarok", 2020, 500);
+
+        RentalsDept rentalsDept = new RentalsDept();
+        rentalsDept.AddVehicle(sedan);
+        rentalsDept.AddVehicle(sedan2);
+        rentalsDept.AddVehicle(bakkie);
+        rentalsDept.AddVehicle(bakkie2);
+        ArrayList<String> expectedVehicles = new ArrayList<String>();
+        expectedVehicles.add("Toyota Corolla");
+        expectedVehicles.add("VW Amarok");
+
+        assertEquals(expectedVehicles, rentalsDept.GetCarsWithTwoAs());
     }
 }

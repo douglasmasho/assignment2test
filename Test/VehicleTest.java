@@ -19,4 +19,5 @@ public class VehicleTest {
         double newPrice = bakkie.GetPrice(slip);
         assert (30000 == newPrice);
     }
+
 }
